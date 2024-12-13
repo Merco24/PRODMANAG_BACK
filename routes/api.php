@@ -24,3 +24,5 @@ Route::get('products', [\App\Http\Controllers\ProductController::class, 'getProd
 Route::get('product/{id}', [\App\Http\Controllers\ProductController::class, 'getProductById']);
 //add product
 Route::post('addProduct', [\App\Http\Controllers\ProductController::class, 'addProduct']);
+//update product
+Route::put('updateProduct/{id}', [\App\Http\Controllers\ProductController::class, 'updateProduct']);

@@ -29,4 +29,15 @@ class ProductController extends Controller
         $product = Product::create($request->all());
         return response()->json($product, 201);
     }
+
+    //update Product
+    public function updateProduct(Request $request, $id): \Illuminate\Http\JsonResponse
+    {
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return response()->json(['message' => 'Produit introuvable'], 404);
+        }
+        $product->update($request->all());
+        return response()->json($product, 200);
+    }
 }
