@@ -40,4 +40,15 @@ class ProductController extends Controller
         $product->update($request->all());
         return response()->json($product, 200);
     }
+
+    //delete Product
+    public function deleteProduct(Request $request, $id): \Illuminate\Http\JsonResponse
+    {
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return response()->json(['message' => 'Produit introuvable'], 404);
+        }
+        $product->delete();
+        return response()->json(null, 204);
+    }
 }
