@@ -12,4 +12,14 @@ class ProductController extends Controller
     {
         return response()->json(Product::all());
     }
+
+    //getProductById
+    public function getProductById($id): \Illuminate\Http\JsonResponse
+    {
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return response()->json(['message' => 'Produit introuvable'], 404);
+        }
+        return response()->json(Product::find($id), 200);
+    }
 }
